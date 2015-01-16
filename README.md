@@ -6,4 +6,4 @@ To build:
 
 To run:
 
-    docker run -d -P --name <name> -v <logs_path>:/logs [-v <db_path>:/db/sqlite] <image_name> 
+    docker run -d -P --name <name> -v <logs_path>:/logs -v [<db_path>:]/db/sqlite <image_name> 
