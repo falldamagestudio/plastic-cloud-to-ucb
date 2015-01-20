@@ -17,6 +17,10 @@ To refresh the server:
 
     docker restart plastic_server
 
+To upload a new license file:
+
+    docker run --rm --volumes-from plastic_data -v $(pwd):/newlicense <image_name> cp /newlicense/plasticd.lic /config
+
 To backup the databases:
 
     mkdir backup
