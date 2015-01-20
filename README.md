@@ -6,7 +6,7 @@ To build:
 
 To run:
 
-    docker run --name plastic_data plastic <image_name> true
+    docker run --name plastic_data <image_name> echo "My data container"
     docker run -d -P --name plastic_server --volumes-from plastic_data <image_name>
 
 To add a user:
