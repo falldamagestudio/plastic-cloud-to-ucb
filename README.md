@@ -25,6 +25,11 @@ To setup containers and initialize volumes:
 	docker cp cryptedservers.conf plastic:/conf
 	docker cp *.key plastic:/conf
 	docker exec plastic sed -i 's/ / \/conf\//g' /conf/cryptedservers.conf
+	docker-compose restart plastic
+
+	# Enable plastic container to talk to Git via SSH
+	docker cp id_rsa plastic:/conf
+	docker-compose restart plastic
 	
 To run a Bash shell within plastic:
 
