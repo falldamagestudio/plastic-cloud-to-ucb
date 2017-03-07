@@ -34,7 +34,7 @@ RUN umtool autg root administrators
 
 ADD loader.log.conf /opt/plasticscm5/server/
 ADD db.conf /opt/plasticscm5/server/
-ADD client.conf cryptedservers.conf* *.key /conf/
+ADD client.conf /conf/
 
 EXPOSE 8087
 
