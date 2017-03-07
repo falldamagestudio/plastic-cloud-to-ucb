@@ -16,6 +16,8 @@ RUN wget -q http://www.plasticscm.com/plasticrepo/plasticscm-latest/Ubuntu_14.04
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get -q update && apt-get install -y -q plasticscm-complete && plasticsd stop
 
+RUN mkdir /root/.ssh
+
 RUN { \
     clconfigureserver --language=en --port=8087 --workingmode=UPWorkingMode; \
     [ -f /opt/plasticscm5/server/users.conf ] && mv /opt/plasticscm5/server/users.conf /conf || touch /conf/users.conf; \
@@ -26,6 +28,7 @@ RUN { \
     ln -s /conf/plasticd.token.lic /opt/plasticscm5/server; \
     ln -s /conf/client.conf /opt/plasticscm5/client/client.conf; \
     ln -s /conf/cryptedservers.conf /opt/plasticscm5/server/cryptedservers.conf; \
+    ln -s /conf/id_rsa /root/.ssh/id_rsa; \
 }
 
 RUN umtool cu root root
@@ -40,4 +43,5 @@ VOLUME /conf
 VOLUME /db/sqlite
 VOLUME /logs
 
-CMD ["/opt/plasticscm5/server/plasticd", "--daemon"]
+ADD start.sh /root/
+CMD ["sh", "/root/start.sh"]
