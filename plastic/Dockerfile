@@ -25,6 +25,7 @@ RUN { \
     ln -s /conf/plasticd.lic /opt/plasticscm5/server; \
     ln -s /conf/plasticd.token.lic /opt/plasticscm5/server; \
     ln -s /conf/client.conf /opt/plasticscm5/client/client.conf; \
+    ln -s /conf/cryptedservers.conf /opt/plasticscm5/server/cryptedservers.conf; \
 }
 
 RUN umtool cu root root
@@ -33,7 +34,7 @@ RUN umtool autg root administrators
 
 ADD loader.log.conf /opt/plasticscm5/server/
 ADD db.conf /opt/plasticscm5/server/
-ADD client.conf /conf
+ADD client.conf cryptedservers.conf* *.key /conf/
 
 EXPOSE 8087
 
