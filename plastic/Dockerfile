@@ -36,8 +36,6 @@ ADD loader.log.conf /opt/plasticscm5/server/
 ADD db.conf /opt/plasticscm5/server/
 ADD client.conf /conf/
 
-EXPOSE 8087
-
 VOLUME /conf
 VOLUME /db/sqlite
 VOLUME /logs
