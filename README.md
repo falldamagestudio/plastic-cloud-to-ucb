@@ -9,17 +9,23 @@ To build:
 
 	docker-compose build
 
+To start:
+
+	docker-compose up -d
+
 To setup containers and initialize volumes:
 
 	# Set up "git" user SSH account
 	ssh-keygen -t rsa -N "" -f id_rsa
 	docker cp id_rsa.pub git-server:/git-server/keys	
 	docker-compose restart git-server
+
+	# Set up replication link
+	<copy cryptedservers.conf & *.key from PlasticSCM5\server directory to current working dir>
+	docker cp cryptedservers.conf plastic:/conf
+	docker cp *.key plastic:/conf
+	docker exec plastic sed -i 's/ / \/conf\//g' /conf/cryptedservers.conf
 	
-To start:
-
-	docker-compose up -d
-
 To run a Bash shell within plastic:
 
 	docker exec -it plastic bash
