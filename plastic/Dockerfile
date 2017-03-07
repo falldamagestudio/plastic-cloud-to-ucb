@@ -3,7 +3,7 @@
 MAINTAINER Miguel González <mgonzalez@codicefactory.com>
 
 RUN apt-get update
-RUN apt-get install -y wget apt-transport-https
+RUN apt-get install -y wget apt-transport-https openssh-client
 
 RUN mkdir /conf
 RUN mkdir /logs
