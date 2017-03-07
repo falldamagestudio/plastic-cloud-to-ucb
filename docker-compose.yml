@@ -3,6 +3,10 @@ version: '2'
 volumes:
   git-server-keys:
   git-server-repos:
+  
+  plastic-conf:
+  plastic-db:
+  plastic-logs:
 
 services:
 
@@ -17,3 +21,12 @@ services:
     - git-server-keys:/git-server/keys
     - git-server-repos:/git-server/repos
 
+  plastic:
+    #image: ...
+    build: plastic
+    restart: always
+    container_name: plastic
+    volumes:
+      - plastic-conf:/conf
+      - plastic-db:/db/sqlite
+      - plastic-logs:/logs
