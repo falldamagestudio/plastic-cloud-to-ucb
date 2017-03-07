@@ -1,0 +1,3 @@
+start.sh eol=lf
+sshd_config eol=lf
+git-shell-commands/no-interactive-login eol=lf
