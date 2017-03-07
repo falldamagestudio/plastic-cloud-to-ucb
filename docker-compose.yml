@@ -1,0 +1,19 @@
+version: '2'
+
+volumes:
+  git-server-keys:
+  git-server-repos:
+
+services:
+
+  git-server:
+    #image: jkarlos/git-server-docker
+    build: git-server
+    restart: always
+    container_name: git-server
+    ports:
+      - "2222:22"
+    volumes:
+    - git-server-keys:/git-server/keys
+    - git-server-repos:/git-server/repos
+
