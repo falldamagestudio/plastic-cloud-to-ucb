@@ -1,0 +1,6 @@
+#!/bin/sh
+printf '%s\n' "Welcome to jkarlos/git-server-docker!"
+printf '%s\n' "Available commands:"
+printf '%s\n' "initrepo <reponame[.git]>   -- creates a repository at repos/<reponame>.git"
+printf '%s\n' "rmrepo <reponame[.git]>     -- deletes a repository at repos/<reponame>.git"
+exit 128
