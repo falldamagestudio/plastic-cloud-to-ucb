@@ -36,9 +36,16 @@ To run a Bash shell within plastic:
 	docker exec -it plastic bash
 
 
-To initialize replication from a Plastic Cloud repo to a local Plastic repo:
+To initialize replication from a Plastic Cloud repo to a Git repo:
 
 	docker exec -it plastic bash
-	cm mkrep <repository>
-	cm replicate <branch>@<repository>@<organization>@Cloud <repo>
-		enter username & password for Plastic Cloud
+		cm mkrep <repository>
+		ssh git@git-server init <repository>.git
+
+To replicate from a Plastic Cloud repo to a Git repo:
+
+	docker exec -it plastic bash
+	for each branch:
+		cm replicate <branch>@<repository>@<organization>@Cloud <repo>
+			enter username & password for Plastic Cloud
+	cm sync <repository> git git@git-server:<repository>.git
