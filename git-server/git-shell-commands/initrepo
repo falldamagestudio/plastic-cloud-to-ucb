@@ -32,6 +32,9 @@ then
 	exit 1
 fi
 
+# All projects shall be in 'repos' folder
+project="repos/$project"
+
 # Create and initialise the project
 mkdir "$project" && \
 cd "$project" && \
