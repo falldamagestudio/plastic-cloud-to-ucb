@@ -32,6 +32,9 @@ RUN mkdir /git-server/keys \
 # More info: https://git-scm.com/docs/git-shell
 COPY git-shell-commands /home/git/git-shell-commands
 
+RUN chown -R git:git /home/git/git-shell-commands \
+	&& chmod 755 /home/git/git-shell-commands/*
+
 # sshd_config file is edited for enable access key and disable access password
 COPY sshd_config /etc/ssh/sshd_config
 COPY start.sh start.sh
