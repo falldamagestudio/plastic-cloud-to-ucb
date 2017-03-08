@@ -43,5 +43,6 @@ VOLUME /conf
 VOLUME /db/sqlite
 VOLUME /logs
 
-ADD start.sh /root/
+ADD *.sh /root/
+RUN chmod u+x /root/*.sh
 CMD ["sh", "/root/start.sh"]
