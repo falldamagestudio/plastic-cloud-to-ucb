@@ -67,3 +67,7 @@ Azure steps:
 
 	# TODO: pick --azure-size  ... A2 is default
 	docker-machine create --driver azure --azure-subscription-id <your Azure subscription ID> --azure-resource-group plastic-cloud-to-ucb --azure-availability-set plastic-cloud-to-ucb --azure-ssh-user ops --azure-location=northeurope plastic-cloud-to-ucb
+
+	# List Docker settings for machine in Azure + instructions on how to config to work against it
+	docker-machine env plastic-cloud-to-ucb
+	
