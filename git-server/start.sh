@@ -19,5 +19,8 @@ if [ "$(ls -A /git-server/repos/)" ]; then
   find . -type d -exec chmod g+s '{}' +
 fi
 
+# Generate host keys as neeced
+ssh-keygen -A
+
 # -D flag avoids executing sshd as a daemon
 /usr/sbin/sshd -D

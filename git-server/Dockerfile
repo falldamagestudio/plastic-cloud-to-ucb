@@ -10,9 +10,6 @@ RUN apk add --no-cache \
 # git=2.8.3-r0
   git
 
-# Key generation on the server
-RUN ssh-keygen -A
-
 # SSH autorun
 # RUN rc-update add sshd
 
