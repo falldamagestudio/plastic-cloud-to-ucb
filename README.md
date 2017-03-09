@@ -1,5 +1,12 @@
 # Bridge from Plastic Cloud to Unity Cloud Build
 
+Glue logic which enables Unity Cloud Build to build from Plastic Cloud repositories. This is accomplished by running some bridge repositories on a machine in the Azure cloud.
+
+Current state:
+	It works, but it does not replicate automatically. Replication needs to be triggered manually each time.
+
+
+
 Consists of two docker containers.
 
 1. Plastic server/client. This will replicate from repos in Plastic Cloud, and push to Git server. Originally based on https://github.com/kalmalyzer/plastic-docker image.
@@ -50,24 +57,32 @@ To delete an initialized/replicated repo:
 
 	docker exec -it plastic bash
 		/root/rmrepo.sh <repository>
-	
-Azure steps:
 
-	Install Python 2.x or 3.x - https://www.python.org/downloads/
-	Install Azure CLI - https://docs.microsoft.com/en-us/cli/azure/install-azure-cli
-
-	# Using Azure CLI with docker extension
-	https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-dockerextension
-
-	# Using docker-machine with Azure driver
-	https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-docker-machine
+To set up a machine in Azure:
 
 	az login
 	note down your Azure subscription ID (the "id" field)
 
-	# TODO: pick --azure-size  ... A2 is default
-	docker-machine create --driver azure --azure-subscription-id <your Azure subscription ID> --azure-resource-group plastic-cloud-to-ucb --azure-availability-set plastic-cloud-to-ucb --azure-ssh-user ops --azure-location=northeurope plastic-cloud-to-ucb
+	docker-machine create --driver azure --azure-subscription-id <your Azure subscription ID> --azure-resource-group plastic-cloud-to-ucb --azure-availability-set plastic-cloud-to-ucb --azure-ssh-user ops --azure-open-port 2222 --azure-location=northeurope plastic-cloud-to-ucb
 
-	# List Docker settings for machine in Azure + instructions on how to config to work against it
+To configure & run software
+
 	docker-machine env plastic-cloud-to-ucb
-	
+	<Follow instructions on last line of output message>
+
+	Follow all installation steps above
+
+Activate Unity Cloud Build for repo:
+
+	docker-machine ip plastic-cloud-to-ucb
+	<write down IP>
+
+	Go to Unity Cloud Build, source repo URL is:
+		ssh://git@<ip>:2222/git-server/repos/<reponame>.git
+
+	Copy the SSH private key to a file called id_rsa.ucb.pub
+	docker cp id_rsa.pub git-server:/git-server/keys	
+	docker-compose restart git-server
+
+	Activate Unity Cloud Build! UCB should now be able to connect.
+
