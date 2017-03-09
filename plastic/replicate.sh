@@ -11,5 +11,5 @@ then
 
 fi 
 
-cm replicate /main@$1@$2@Cloud $1
+cm replicate /main@$1@$2@Cloud $1 --authfile=/conf/authentication.conf
 cm sync $1 git git@git-server:repos/$1.git
