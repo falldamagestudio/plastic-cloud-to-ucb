@@ -1,2 +1,2 @@
 *.conf eol=lf
-start.sh eol=lf
+*.sh eol=lf
