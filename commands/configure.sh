@@ -8,8 +8,10 @@ if test ! -e "cryptedservers.conf"; then
 fi
 
 # Set up "git" user SSH account
-ssh-keygen -t rsa -N "" -f id_rsa.plastic
-docker cp id_rsa.plastic.pub git-server:/git-server/keys
+if test ! -e id_rsa; then
+  ssh-keygen -t rsa -N "" -f id_rsa
+fi
+docker cp id_rsa.pub git-server:/git-server/keys
 
 # Set up encryption for Plastic server when talking to Plastic Cloud repositories
 docker cp cryptedservers.conf plastic:/conf
@@ -17,6 +19,6 @@ docker cp *.key plastic:/conf
 docker exec plastic sed -i 's/ / \/conf\//g' /conf/cryptedservers.conf # Make file paths inside of cryptedservers.conf that reference key files absolute
 
 # Enable plastic container to talk to Git via SSH
-docker cp id_rsa.plastic plastic:/conf
+docker cp id_rsa plastic:/conf
 
 docker-compose restart
