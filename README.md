@@ -63,7 +63,7 @@ To set up a machine in Azure:
 	az login
 	note down your Azure subscription ID (the "id" field)
 
-	docker-machine create --driver azure --azure-subscription-id <your Azure subscription ID> --azure-resource-group plastic-cloud-to-ucb --azure-availability-set plastic-cloud-to-ucb --azure-ssh-user ops --azure-open-port 2222 --azure-location=northeurope plastic-cloud-to-ucb
+	docker-machine create --driver azure --azure-subscription-id <your Azure subscription ID> --azure-resource-group plastic-cloud-to-ucb --azure-availability-set plastic-cloud-to-ucb --azure-ssh-user ops --azure-open-port 2222 --azure-location=northeurope --azure-vnet plastic-cloud-to-ucb plastic-cloud-to-ucb
 
 To configure & run software
 
