@@ -26,34 +26,34 @@ Perform all activity from within the Docker terminal
 
 ### Rent & start up a VM in Azure
 
-	management\create_azure_host.sh
+	commands/create_azure_host.sh
 	
 ### Build Docker containers
 
-	management\build.sh
+	commands/build.sh
 
 ### Start Docker containers
 
-	management\up.sh
+	commands/up.sh
 
 ### Configure Docker containers to talk to each other and Plastic Cloud
 
 	Copy cryptedservers.conf & *.key files from the PlasticSCM5\server directory on your local machine to current working dir
-	management\configure.sh
+	commands/configure.sh
 
 ### Configure Docker container to accept logins from Unity Cloud Build
 
 	Begin setup of the build job in Unity Cloud Build; URL = ssh://git@<Azure machine IP>:2222/git-server/repos/<reponame>.git
 	Copy the SSH public key that will be used into a file named 'id_rsa.ucb.pub'
-	management\configure.sh
+	commands/configure.sh
 
 ### Prepare for replication of a Plastic Cloud repository
 
-	management\create_repo.sh <reponame>
+	commands/create_repo.sh <reponame>
 	
 ### Replicate repository from Plastic Cloud to the Git server running inside the VM
 
-	management\replicate.sh <reponame> <Plastic Cloud organization>
+	commands/replicate.sh <reponame> <Plastic Cloud organization>
 		[enter username & password for Plastic Cloud account]
 
 ### Trigger build in Unity Cloud Build
@@ -62,11 +62,11 @@ Perform all activity from within the Docker terminal
 
 ### Remove repository from Git server
 
-	management\remove_repo.sh <reponame>
+	commands/remove_repo.sh <reponame>
 	
 ### Remove VM from Azure
 
-	management\destroy_azure_host.sh
+	commands/destroy_azure_host.sh
 
 ## Misc
 	
