@@ -27,6 +27,7 @@ RUN mkdir /git-server/keys \
 
 # Set up repositories folder; these repos will be accessible as git@<host>:repos/<reponame>.git 
 RUN mkdir /git-server/repos \
+  && chown git:git /git-server/repos \
   && ln -s /git-server/repos /home/git/repos
   
 # This is a login shell for SSH accounts to provide restricted Git access.
