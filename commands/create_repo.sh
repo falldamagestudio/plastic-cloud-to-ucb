@@ -5,4 +5,4 @@ if [ $# -lt 1 ]; then
   exit 1
 fi
 
-docker exec plastic /root/initrepo $1
+docker exec plastic /root/initrepo.sh $1
