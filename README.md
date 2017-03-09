@@ -77,3 +77,9 @@ Perform all activity from within the Docker terminal
 ### Configure Docker tools to work against the VM in Azure
 
 	eval $(docker-machine env plastic-cloud-to-ucb)
+
+	
+## Thanks
+
+Thanks to Miguel González for the original Plastic server project: https://github.com/mig42/plastic-docker
+Thanks to José Carlos Bernárdez for the original Git server project: https://github.com/jkarlosb/git-server-docker

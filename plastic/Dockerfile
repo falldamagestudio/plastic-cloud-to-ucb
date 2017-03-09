@@ -1,6 +1,6 @@
 ﻿FROM ubuntu:trusty
 
-MAINTAINER Miguel González <mgonzalez@codicefactory.com>
+MAINTAINER Mikael Kalms <mikael@kalms.org>
 
 RUN apt-get update
 RUN apt-get install -y wget apt-transport-https openssh-client
