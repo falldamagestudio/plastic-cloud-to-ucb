@@ -49,3 +49,21 @@ To replicate from a Plastic Cloud repo to a Git repo:
 		cm replicate <branch>@<repository>@<organization>@Cloud <repo>
 			enter username & password for Plastic Cloud
 	cm sync <repository> git git@git-server:<repository>.git
+
+
+Azure steps:
+
+	Install Python 2.x or 3.x - https://www.python.org/downloads/
+	Install Azure CLI - https://docs.microsoft.com/en-us/cli/azure/install-azure-cli
+
+	# Using Azure CLI with docker extension
+	https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-dockerextension
+
+	# Using docker-machine with Azure driver
+	https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-docker-machine
+
+	az login
+	note down your Azure subscription ID (the "id" field)
+
+	# TODO: pick --azure-size  ... A2 is default
+	docker-machine create --driver azure --azure-subscription-id <your Azure subscription ID> --azure-resource-group plastic-cloud-to-ucb --azure-availability-set plastic-cloud-to-ucb --azure-ssh-user ops --azure-location=northeurope plastic-cloud-to-ucb
