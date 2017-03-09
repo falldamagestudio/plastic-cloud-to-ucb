@@ -39,18 +39,18 @@ To run a Bash shell within plastic:
 To initialize replication from a Plastic Cloud repo to a Git repo:
 
 	docker exec -it plastic bash
-		cm mkrep <repository>
-		ssh git@git-server init <repository>.git
-
-To replicate from a Plastic Cloud repo to a Git repo:
+		/root/initrepo.sh <repository>
+	
+To replicate the /main branch from a Plastic Cloud repo to a Git repo:
 
 	docker exec -it plastic bash
-	for each branch:
-		cm replicate <branch>@<repository>@<organization>@Cloud <repo>
-			enter username & password for Plastic Cloud
-	cm sync <repository> git git@git-server:<repository>.git
+		/root/replicate.sh <repository> <organization>
 
+To delete an initialized/replicated repo:
 
+	docker exec -it plastic bash
+		/root/rmrepo.sh <repository>
+	
 Azure steps:
 
 	Install Python 2.x or 3.x - https://www.python.org/downloads/
