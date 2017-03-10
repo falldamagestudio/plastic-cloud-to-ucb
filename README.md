@@ -1,4 +1,4 @@
-# Bridge from Plastic Cloud to Unity Cloud Build
+﻿# Bridge from Plastic Cloud to Unity Cloud Build
 
 Glue logic which enables Unity Cloud Build to build from Plastic Cloud repositories. This is accomplished by running some bridge repositories on a machine in the Azure cloud.
 
@@ -48,12 +48,6 @@ Copy cryptedservers.conf & *.key files from `C:\Program Files\PlasticSCM5\server
 Copy profiles.conf from `C:\Users\<Current user>\AppData\Local\plastic4` to `temp`
 Run `commands/configure.sh`
 
-### Configure Docker container to accept logins from Unity Cloud Build
-
-Begin setup of the build job in Unity Cloud Build; URL = `ssh://git@<Azure machine IP>:2222/repos/<reponame>.git`
-Copy the SSH public key that Unity Cloud Build will use into a file named `temp/id_rsa.ucb.pub`
-Run `commands/configure.sh`
-
 ### Prepare for replication of a Plastic Cloud repository
 
 Run `commands/create_repo.sh <reponame>`
@@ -61,6 +55,12 @@ Run `commands/create_repo.sh <reponame>`
 ### Replicate repository from Plastic Cloud to the Git server running inside the VM
 
 Run `commands/replicate.sh <reponame>`
+
+### Configure Docker container to accept logins from Unity Cloud Build for one specific project
+
+Begin setup of the build job in Unity Cloud Build; URL = `ssh://git@<Azure machine IP>:2222/repos/<reponame>.git`
+Copy the SSH public key that Unity Cloud Build will use into a file named `temp/id_rsa.<reponame>.pub`
+Run `commands/configure.sh`
 
 ### Trigger build in Unity Cloud Build
 
