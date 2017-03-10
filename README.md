@@ -50,7 +50,7 @@ Run `commands/configure.sh`
 
 ### Configure Docker container to accept logins from Unity Cloud Build
 
-Begin setup of the build job in Unity Cloud Build; URL = `ssh://git@<Azure machine IP>:2222/git-server/repos/<reponame>.git`
+Begin setup of the build job in Unity Cloud Build; URL = `ssh://git@<Azure machine IP>:2222/repos/<reponame>.git`
 Copy the SSH public key that Unity Cloud Build will use into a file named `temp/id_rsa.ucb.pub`
 Run `commands/configure.sh`
 

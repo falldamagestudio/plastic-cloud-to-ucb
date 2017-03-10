@@ -18,8 +18,8 @@ services:
     ports:
       - "2222:22"
     volumes:
-    - git-server-keys:/git-server/keys
-    - git-server-repos:/git-server/repos
+    - git-server-keys:/keys
+    - git-server-repos:/repos
 
   plastic:
     #image: ...

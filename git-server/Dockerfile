@@ -17,15 +17,15 @@ WORKDIR /git-server/
 
 # -D flag avoids password generation
 # -s flag changes user's shell
-RUN mkdir /git-server/keys \
+RUN mkdir /keys \
   && adduser -D -s /usr/bin/git-shell git \
   && echo git:12345 | chpasswd \
   && mkdir /home/git/.ssh
 
 # Set up repositories folder; these repos will be accessible as git@<host>:repos/<reponame>.git 
-RUN mkdir /git-server/repos \
-  && chown git:git /git-server/repos \
-  && ln -s /git-server/repos /home/git/repos
+RUN mkdir /repos \
+  && chown git:git /repos \
+  && ln -s /repos /home/git/repos
   
 # This is a login shell for SSH accounts to provide restricted Git access.
 # It permits execution only of server-side Git commands implementing the
@@ -43,7 +43,7 @@ COPY start.sh start.sh
 
 EXPOSE 22
 
-VOLUME /git-server/keys
-VOLUME /git-server/repos
+VOLUME /keys
+VOLUME /repos
 
 CMD ["sh", "start.sh"]

@@ -25,7 +25,7 @@ docker cp temp/remote_server.conf plastic:/conf
 if test ! -e temp/id_rsa; then
   ssh-keygen -t rsa -N "" -f temp/id_rsa
 fi
-docker cp temp/id_rsa.pub git-server:/git-server/keys
+docker cp temp/id_rsa.pub git-server:/keys
 
 # Set up encryption for Plastic server when talking to Plastic Cloud repositories
 docker cp temp/cryptedservers.conf plastic:/conf
