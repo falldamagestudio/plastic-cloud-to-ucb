@@ -13,7 +13,7 @@ if test ! -e "temp/cryptedservers.conf"; then
 fi
 
 # Create authentication file for when the local Plastic server is going to connect to Plastic Cloud
-echo "LDAPWorkingMode" > temp/authentication.conf
+grep -E -m 1 -o "<WorkingMode>(.*)</WorkingMode>" temp/profiles.conf | sed -e 's,.*<WorkingMode>\([^<]*\)</WorkingMode>.*,\1,g' > temp/authentication.conf
 grep -E -m 1 -o "<SecurityConfig>(.*)</SecurityConfig>" temp/profiles.conf | sed -e 's,.*<SecurityConfig>\([^<]*\)</SecurityConfig>.*,\1,g' >> temp/authentication.conf
 docker cp temp/authentication.conf plastic:/conf
 
