@@ -60,7 +60,7 @@ Run `commands/create_repo.sh <reponame>`
 
 ### Replicate repository from Plastic Cloud to the Git server running inside the VM
 
-Run `commands/replicate.sh <reponame> <Plastic Cloud organization>`
+Run `commands/replicate.sh <reponame>`
 
 ### Trigger build in Unity Cloud Build
 

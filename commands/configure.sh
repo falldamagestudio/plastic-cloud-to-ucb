@@ -17,6 +17,10 @@ echo "LDAPWorkingMode" > temp/authentication.conf
 grep -E -m 1 -o "<SecurityConfig>(.*)</SecurityConfig>" temp/profiles.conf | sed -e 's,.*<SecurityConfig>\([^<]*\)</SecurityConfig>.*,\1,g' >> temp/authentication.conf
 docker cp temp/authentication.conf plastic:/conf
 
+# Determine remote server name for when the local Plastic server is going to connect to Plastic Cloud
+grep -E -m 1 -o "<Server>(.*)</Server>" temp/profiles.conf | sed -e 's,.*<Server>\([^<]*\)</Server>.*,\1,g' > temp/remote_server.conf
+docker cp temp/remote_server.conf plastic:/conf
+
 # Set up "git" user SSH account
 if test ! -e temp/id_rsa; then
   ssh-keygen -t rsa -N "" -f temp/id_rsa
