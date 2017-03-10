@@ -19,4 +19,4 @@ fi
 
 name=plastic-cloud-to-ucb-azure
 
-docker-machine create --driver azure --azure-subscription-id "$id" --azure-resource-group "$name" --azure-availability-set "$name" --azure-ssh-user ops --azure-open-port 2222 --azure-location "$location" --azure-vnet "$name" --azure-static-public-ip "$name"
+docker-machine create --driver azure --azure-subscription-id "$id" --azure-resource-group "$name" --azure-availability-set "$name" --azure-ssh-user ops --azure-open-port 2222 --azure-location "$location" --azure-vnet "$name" --azure-subnet "$name" --azure-static-public-ip "$name"
