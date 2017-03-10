@@ -10,11 +10,13 @@ if [ $# -lt 1 ]; then
   exit 1
 fi
 
-id=$1
+id="$1"
 
 location=northeurope
 if [ $# -ge 2 ]; then
-  location=$2
+  location="$2"
 fi
 
-docker-machine create --driver azure --azure-subscription-id $id --azure-resource-group plastic-cloud-to-ucb --azure-availability-set plastic-cloud-to-ucb --azure-ssh-user ops --azure-open-port 2222 --azure-location $location --azure-vnet plastic-cloud-to-ucb plastic-cloud-to-ucb
+name=plastic-cloud-to-ucb-azure
+
+docker-machine create --driver azure --azure-subscription-id "$id" --azure-resource-group "$name" --azure-availability-set "$name" --azure-ssh-user ops --azure-open-port 2222 --azure-location "$location" --azure-vnet "$name" "$name"

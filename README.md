@@ -82,7 +82,7 @@ Run `eval $(docker-machine env default)`
 
 ### Configure Docker tools to work against the VM in Azure
 
-Run `eval $(docker-machine env plastic-cloud-to-ucb)`
+Run `eval $(docker-machine env plastic-cloud-to-ucb-azure)`
 
 	
 ## Thanks
