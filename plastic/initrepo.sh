@@ -11,7 +11,5 @@ then
 
 fi 
 
-/bin/sh /root/setgitserversshkey.sh
-
 cm mkrep $1
 ssh git@git-server initrepo $1

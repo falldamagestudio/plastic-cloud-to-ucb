@@ -29,6 +29,8 @@ RUN { \
     ln -s /conf/client.conf /opt/plasticscm5/client/client.conf; \
     ln -s /conf/cryptedservers.conf /opt/plasticscm5/server/cryptedservers.conf; \
     ln -s /conf/id_rsa /root/.ssh/id_rsa; \
+    ln -s /conf/ssh_config /root/.ssh/config; \
+    ln -s /conf/known_hosts /root/.ssh/known_hosts; \
 }
 
 RUN umtool cu root root
@@ -38,6 +40,7 @@ RUN umtool autg root administrators
 ADD loader.log.conf /opt/plasticscm5/server/
 ADD db.conf /opt/plasticscm5/server/
 ADD client.conf /conf/
+ADD ssh_config /conf/
 
 VOLUME /conf
 VOLUME /db/sqlite

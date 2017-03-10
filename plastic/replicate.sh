@@ -11,8 +11,6 @@ then
 
 fi 
 
-/bin/sh /root/setgitserversshkey.sh
-
 repo_name="$1"
 
 # Only replicate /main branch from Plastic Cloud

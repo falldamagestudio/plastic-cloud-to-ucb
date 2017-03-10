@@ -32,6 +32,9 @@ docker cp temp/cryptedservers.conf plastic:/conf
 docker cp temp/*.key plastic:/conf
 docker exec plastic sed -i 's/ / \/conf\//g' /conf/cryptedservers.conf # Make file paths inside of cryptedservers.conf that reference key files absolute
 
+# Establish git-server host keys in plastic container
+docker exec plastic /root/updateknownhosts.sh
+
 # Enable plastic container to talk to Git via SSH
 docker cp temp/id_rsa plastic:/conf
 
