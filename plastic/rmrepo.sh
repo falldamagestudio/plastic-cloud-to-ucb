@@ -11,5 +11,7 @@ then
 
 fi 
 
+/bin/sh /root/setgitserversshkey.sh
+
 cm rmrep $1
 ssh git@git-server rmrepo $1

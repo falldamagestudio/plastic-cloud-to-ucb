@@ -11,6 +11,8 @@ then
 
 fi 
 
+/bin/sh /root/setgitserversshkey.sh
+
 repo_name="$1"
 
 # Only replicate /main branch from Plastic Cloud
@@ -22,7 +24,10 @@ source_replication_path="$source_replication_branch"@"$repo_name"@"$remote_serve
 local_repository_name="$repo_name"
 git_repository_url=git@git-server:repos/"$repo_name".git
 
-echo "Replicating from $source_replication_path via $local_repository_name to $git_repository_url"
-
+# Replicate from Plastic Cloud to local Plastic server
+echo "Replicating from $source_replication_path to $local_repository_name in local Plastic server"
 cm replicate "$source_replication_path" "$local_repository_name" --authfile=/conf/authentication.conf
+
+# Replicate from local Plastic server to local Git server
+echo "Replicating from $local_repository_name in local Plastic server to $git_repository_url"
 cm sync "$local_repository_name" git "$git_repository_url"
