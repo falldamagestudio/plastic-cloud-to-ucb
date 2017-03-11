@@ -6,7 +6,7 @@
 # The VM will have Docker installed on it, and port 2222 will be opened (this is where the Git server will be accessible).
 
 if [ $# -lt 1 ]; then
-  echo "Usage: create_azure_host <Azure subscription ID> <location [default: northeurope]>"
+  echo "Usage: create_host.sh <Azure subscription ID> <location [default: northeurope]>"
   exit 1
 fi
 

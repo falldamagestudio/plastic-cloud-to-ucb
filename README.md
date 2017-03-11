@@ -32,7 +32,7 @@ Perform all activity from within the Docker terminal
 
 ### Rent & start up a VM in Azure
 
-Run `commands/create_azure_host.sh`
+Run `commands/azure/create_host.sh`
 
 ### Build Docker containers
 
@@ -72,7 +72,7 @@ Run `commands/remove_repo.sh <reponame>`
 
 ### Remove VM from Azure
 
-Run `commands/destroy_azure_host.sh`
+Run `commands/azure/destroy_host.sh`
 
 ## Misc
 	
