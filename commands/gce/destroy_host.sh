@@ -10,8 +10,6 @@ gcloud=`./commands/gce/gcloud.sh`
 
 name=plastic-cloud-to-ucb-gce
 
-region="europe-west1"
-
 # Remove VM
 docker-machine rm "$name"
 
@@ -19,7 +17,9 @@ docker-machine rm "$name"
 "$gcloud" compute firewall-rules delete --quiet "$name"
 
 # Deallocate static IP address
-"$gcloud" compute addresses delete --quiet --region "$region" "$name"
+for region in `"$gcloud" compute addresses list | grep "$name" | awk '{ print $2 }'`; do
+  "$gcloud" compute addresses delete --quiet --region "$region" "$name"
+done
 
 ## Determimne account name in email address form
 #iam_account=`"$gcloud" iam service-accounts list | grep "$name" | awk '{ print $2 }'`
