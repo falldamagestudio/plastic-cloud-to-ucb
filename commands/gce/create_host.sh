@@ -9,6 +9,8 @@
 #
 # The VM will have Docker installed on it, and port 2222 will be opened (this is where the Git server will be accessible).
 
+set -eu
+
 if [ $# -lt 1 ]; then
   echo "Usage: create_host.sh <Google Cloud Project ID> <region [default: europe-west1]> <zone [default: europe-west1-b]>"
   exit 1
@@ -27,16 +29,7 @@ if [ $# -ge 3 ]; then
   zone="$3"
 fi
 
-# The Docker Bash terminal under Windows will not match 'gcloud' against 'gcloud.cmd'. Therefore we will try both gcloud and gcloud.cmd. 
-gcloud=gcloud
-if ! type "$gcloud" &> /dev/null; then
-  gcloud=gcloud.cmd
-  if ! type "$gcloud" &> /dev/null; then
-    echo "Cannot run 'gcloud' commands. Please ensure you have installed the Google Cloud SDK and added the gcloud binaries directory to your PATH."
-    exit 1
-  fi
-fi
-
+gcloud=`./commands/gce/gcloud.sh`
 
 # Allocate a static IP address
 "$gcloud" compute addresses create --region "$region" "$name"

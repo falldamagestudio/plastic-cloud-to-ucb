@@ -6,15 +6,7 @@
 # gcloud[.cmd] auth login
 # gcloud[.cmd] auth application-default login
 
-# The Docker Bash terminal under Windows will not match 'gcloud' against 'gcloud.cmd'. Therefore we will try both gcloud and gcloud.cmd. 
-gcloud=gcloud
-if ! type "$gcloud" &> /dev/null; then
-  gcloud=gcloud.cmd
-  if ! type "$gcloud" &> /dev/null; then
-    echo "Cannot run 'gcloud' commands. Please ensure you have installed the Google Cloud SDK and added the gcloud binaries directory to your PATH."
-    exit 1
-  fi
-fi
+gcloud=`./commands/gce/gcloud.sh`
 
 name=plastic-cloud-to-ucb-gcloud
 
