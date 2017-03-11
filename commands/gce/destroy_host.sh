@@ -6,6 +6,8 @@
 # gcloud[.cmd] auth login
 # gcloud[.cmd] auth application-default login
 
+set -eu
+
 gcloud=`./commands/gce/gcloud.sh`
 
 name=plastic-cloud-to-ucb-gce
