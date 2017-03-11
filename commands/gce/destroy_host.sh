@@ -16,13 +16,13 @@ region="europe-west1"
 docker-machine rm "$name"
 
 # Remove firewall rule
-"$gcloud" compute firewall-rules delete "$name"
+"$gcloud" compute firewall-rules delete --quiet "$name"
 
 # Deallocate static IP address
-"$gcloud" compute addresses delete --region "$region" "$name"
+"$gcloud" compute addresses delete --quiet --region "$region" "$name"
 
 ## Determimne account name in email address form
 #iam_account=`"$gcloud" iam service-accounts list | grep "$name" | awk '{ print $2 }'`
 #
 ## Delete service account
-#"$gcloud" iam service-accounts delete "$iam_account"
+#"$gcloud" iam service-accounts delete --quiet "$iam_account"
