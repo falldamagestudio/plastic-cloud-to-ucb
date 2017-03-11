@@ -8,7 +8,7 @@
 
 gcloud=`./commands/gce/gcloud.sh`
 
-name=plastic-cloud-to-ucb-gcloud
+name=plastic-cloud-to-ucb-gce
 
 region="europe-west1"
 

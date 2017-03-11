@@ -17,7 +17,7 @@ if [ $# -lt 1 ]; then
 fi 
 google_cloud_project_id="$1"
 
-name=plastic-cloud-to-ucb-gcloud
+name=plastic-cloud-to-ucb-gce
 
 region=europe-west1
 if [ $# -ge 2 ]; then
