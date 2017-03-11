@@ -10,7 +10,7 @@
 # The VM will have Docker installed on it, and port 2222 will be opened (this is where the Git server will be accessible).
 
 if [ $# -lt 1 ]; then
-  echo "Usage: create_google_host <Google Cloud Project ID> <region [default: europe-west1]> <zone [default: europe-west1-b]>"
+  echo "Usage: create_host.sh <Google Cloud Project ID> <region [default: europe-west1]> <zone [default: europe-west1-b]>"
   exit 1
 fi 
 google_cloud_project_id="$1"
