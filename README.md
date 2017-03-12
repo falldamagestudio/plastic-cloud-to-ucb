@@ -1,6 +1,6 @@
 ﻿# Bridge from Plastic Cloud to Unity Cloud Build
 
-Glue logic which enables Unity Cloud Build to build from Plastic Cloud repositories. This is accomplished by running some bridge repositories on a machine in the Azure cloud.
+Glue logic which enables Unity Cloud Build to build from Plastic Cloud repositories. This is accomplished by running some bridge repositories on a VM in Azure or Google Cloud.
 
 ## Current state
 
