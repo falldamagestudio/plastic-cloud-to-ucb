@@ -30,31 +30,35 @@ Perform all activity from within the Docker terminal
 
 ### Build Docker containers
 
-Run `commands/build.sh`
+Run `./commands/build.sh`
 
 ### Start Docker containers
 
-Run `commands/up.sh`
+Run `./commands/up.sh`
 
 ### Configure Docker containers to talk to each other and Plastic Cloud
 
 Copy cryptedservers.conf & *.key files from `C:\Program Files\PlasticSCM5\server` to `temp`
+
 Copy profiles.conf from `C:\Users\<Current user>\AppData\Local\plastic4` to `temp`
-Run `commands/configure.sh`
+
+Run `./commands/configure.sh`
 
 ### Prepare for replication of a Plastic Cloud repository
 
-Run `commands/create_repo.sh <reponame>`
+Run `./commands/create_repo.sh <reponame>`
 
 ### Replicate repository from Plastic Cloud to the Git server running inside the VM
 
-Run `commands/replicate.sh <reponame>`
+Run `./commands/replicate.sh <reponame>`
 
 ### Configure Docker container to accept logins from Unity Cloud Build for one specific project
 
 Begin setup of the build job in Unity Cloud Build; URL = `ssh://git@<Azure machine IP>:2222/repos/<reponame>.git`
+
 Copy the SSH public key that Unity Cloud Build will use into a file named `temp/id_rsa.<reponame>.pub`
-Run `commands/configure.sh`
+
+Run `./commands/configure.sh`
 
 ### Trigger build in Unity Cloud Build
 
@@ -64,7 +68,7 @@ Done! UCB should now be able to fetch contents from the Git repository and build
 
 ### Remove repository from Git server
 
-Run `commands/remove_repo.sh <reponame>`
+Run `./commands/remove_repo.sh <reponame>`
 
 ## Microsoft Azure
 
@@ -79,7 +83,7 @@ Run `az login` and complete authentication in browser
 
 ### Rent & start up a VM in Azure
 
-Run `commands/azure/create_host.sh`
+Run `./commands/azure/create_host.sh`
 
 ### Configure Docker tools to work against your VM in Azure
 
@@ -87,7 +91,7 @@ Run `eval $(docker-machine env plastic-cloud-to-ucb-azure)`
 
 ### Remove your VM from Azure
 
-Run `commands/azure/destroy_host.sh`
+Run `./commands/azure/destroy_host.sh`
 
 ## Google Cloud / Google Compute Engine
 
