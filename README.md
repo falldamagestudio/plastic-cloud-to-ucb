@@ -1,12 +1,12 @@
 ﻿# Bridge from Plastic Cloud to Unity Cloud Build
 
-Glue logic which enables (Unity Cloud Build)[https://unity3d.com/services/cloud-build] to build from (Plastic Cloud)[https://www.plasticscm.com/cloud/index.html] repositories.
+Glue logic which enables [Unity Cloud Build](https://unity3d.com/services/cloud-build) to build from [Plastic Cloud](https://www.plasticscm.com/cloud/index.html) repositories.
 
 If either of these happened, this project would become obsolete:
 
 1. Codice Software implements a Git server interface for Plastic Cloud. Once there is such an interface, complete with account- and SSH-key-authentication, then Unity Cloud
-Build will be able to connect to the Plastic Cloud repositories with their current implementation. (Forum thread)[http://www.plasticscm.net/index.php?/topic/20148-does-plastic-support-unity-cloud-build-yet/]
-2. Unity's Cloud Build team implements tooling around the Plastic client that enables it to watch and pull from remote repositories. (Forum thread)[https://forum.unity3d.com/threads/plastic-scm-support-in-ucb.268999/]
+Build will be able to connect to the Plastic Cloud repositories with their current implementation. [Forum thread](http://www.plasticscm.net/index.php?/topic/20148-does-plastic-support-unity-cloud-build-yet/)
+2. Unity's Cloud Build team implements tooling around the Plastic client that enables it to watch and pull from remote repositories. [Forum thread](https://forum.unity3d.com/threads/plastic-scm-support-in-ucb.268999/)
 
 ## Current state
 
