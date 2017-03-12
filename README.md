@@ -26,7 +26,7 @@ The containers can be run on the same VM.
 
 ## "Quick" start
 
-Perform all activity from within the Docker terminal
+Perform all activity from within the Docker terminal.
 
 ### Build Docker containers
 
@@ -52,9 +52,9 @@ Run `./commands/create_repo.sh <reponame>`
 
 Run `./commands/replicate.sh <reponame>`
 
-### Configure Docker container to accept logins from Unity Cloud Build for one specific project
+### Configure Git server to accept logins from Unity Cloud Build for one specific project
 
-Begin setup of the build job in Unity Cloud Build; URL = `ssh://git@<Azure machine IP>:2222/repos/<reponame>.git`
+Begin setup of the build job in Unity Cloud Build; URL = `ssh://git@<Docker machine external IP>:2222/repos/<reponame>.git`
 
 Copy the SSH public key that Unity Cloud Build will use into a file named `temp/id_rsa.<reponame>.pub`
 
@@ -64,7 +64,7 @@ Run `./commands/configure.sh`
 
 (This requires the host that runs Docker to be accessible from the Internet)
 
-Done! UCB should now be able to fetch contents from the Git repository and build it
+Done! UCB should now be able to fetch contents from the Git repository and build it.
 
 ### Remove repository from Git server
 
@@ -131,4 +131,5 @@ Run `eval $(docker-machine env default)`
 ## Thanks
 
 Thanks to Miguel González for the original Plastic server project: https://github.com/mig42/plastic-docker
+
 Thanks to José Carlos Bernárdez for the original Git server project: https://github.com/jkarlosb/git-server-docker
