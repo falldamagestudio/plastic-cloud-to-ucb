@@ -1,6 +1,12 @@
 ﻿# Bridge from Plastic Cloud to Unity Cloud Build
 
-Glue logic which enables Unity Cloud Build to build from Plastic Cloud repositories. This is accomplished by running some bridge repositories on a VM in Azure or Google Cloud.
+Glue logic which enables (Unity Cloud Build)[https://unity3d.com/services/cloud-build] to build from (Plastic Cloud)[https://www.plasticscm.com/cloud/index.html] repositories.
+
+If either of these happened, this project would become obsolete:
+
+1. Codice Software implements a Git server interface for Plastic Cloud. Once there is such an interface, complete with account- and SSH-key-authentication, then Unity Cloud
+Build will be able to connect to the Plastic Cloud repositories with their current implementation. (Forum thread)[http://www.plasticscm.net/index.php?/topic/20148-does-plastic-support-unity-cloud-build-yet/]
+2. Unity's Cloud Build team implements tooling around the Plastic client that enables it to watch and pull from remote repositories. (Forum thread)[https://forum.unity3d.com/threads/plastic-scm-support-in-ucb.268999/]
 
 ## Current state
 
@@ -8,12 +14,10 @@ It works, but it does not replicate automatically. Replication needs to be trigg
 
 ## Overview
 
-This package contains two Docker containers. Together, these form a bridge from Plastic Cloud to Unity Cloud Build.
+This package contains two Docker containers. You deploy these containers to a VM in Azure or Google Cloud. Together, these form a bridge from Plastic Cloud to Unity Cloud Build.
 
 1. Plastic server/client. This will replicate from repos in Plastic Cloud, and push to the Git server.
 2. Git server. This will be exposed to the Internet. Unity Cloud Build will regularly look for changes in this server.
-
-The containers can be run on the same VM.
 
 ## Prerequisites
 
@@ -25,6 +29,15 @@ The containers can be run on the same VM.
 - Install [Docker](https://docs.docker.com/engine/installation/) or [Docker Toolbox](https://docs.docker.com/toolbox/overview/)
 
 ## "Quick" start
+
+- Begin by (testing on your local machine)[#testing-on-your-local-machine].
+You should be able to get replication up and running, but Unity Cloud Build will be unable to connect since your machine does not have a public IP.
+- Rent a VM from (Azure)[#running-in-microsoft-azure] or Google
+- Deploy the current configuration to Azure/Google: Run `./commands/up.sh && ./commands/configure.sh`
+- Add repositories for replication: Run `./commands/create_repo.sh <reponame>` for each repo
+- Unity Cloud Build should now be able to initiate builds for those repositories
+
+## Testing on your local machine
 
 Perform all activity from within the Docker terminal.
 
@@ -60,17 +73,13 @@ Copy the SSH public key that Unity Cloud Build will use into a file named `temp/
 
 Run `./commands/configure.sh`
 
-### Trigger build in Unity Cloud Build
-
-(This requires the host that runs Docker to be accessible from the Internet)
-
-Done! UCB should now be able to fetch contents from the Git repository and build it.
+Unity Cloud Build should now be able to access the repository on your Git server.
 
 ### Remove repository from Git server
 
 Run `./commands/remove_repo.sh <reponame>`
 
-## Microsoft Azure
+## Running in Microsoft Azure
 
 ### Prerequisites
 
@@ -93,7 +102,7 @@ Run `eval $(docker-machine env plastic-cloud-to-ucb-azure)`
 
 Run `./commands/azure/destroy_host.sh`
 
-## Google Cloud / Google Compute Engine
+## Running in Google Cloud / Google Compute Engine
 
 ### Prerequisites
 
