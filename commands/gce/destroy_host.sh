@@ -6,14 +6,27 @@
 # gcloud[.cmd] auth login
 # gcloud[.cmd] auth application-default login
 
-set -eu
+# Run all cleanup steps, even if one fails
+#set -eu
 
 gcloud=`./commands/gce/gcloud.sh`
 
-name=plastic-cloud-to-ucb-gce
+projectname="Plastic Cloud to UCB GCE"
+
+name="plastic-cloud-to-ucb-gce"
 
 # Remove VM
-docker-machine rm "$name"
+docker-machine rm -f "$name"
+
+# Translate from  project name to project ID
+projectid=`"$gcloud" projects list | grep "$projectname" | awk '{ print $1 }'`
+if [ "$projectid" == "" ]; then
+  echo "Project \"$projectname\" cannot be found in Google Cloud. Please make sure you have created the project, enabled Compute Engine API access, and configured billing."
+  exit 1
+fi
+
+# Switch currently-active project to this one
+"$gcloud" config set project "$projectid"
 
 # Remove firewall rule
 "$gcloud" compute firewall-rules delete --quiet "$name"
@@ -22,9 +35,3 @@ docker-machine rm "$name"
 for region in `"$gcloud" compute addresses list | grep "$name" | awk '{ print $2 }'`; do
   "$gcloud" compute addresses delete --quiet --region "$region" "$name"
 done
-
-## Determimne account name in email address form
-#iam_account=`"$gcloud" iam service-accounts list | grep "$name" | awk '{ print $2 }'`
-#
-## Delete service account
-#"$gcloud" iam service-accounts delete --quiet "$iam_account"

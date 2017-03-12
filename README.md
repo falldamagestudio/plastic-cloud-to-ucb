@@ -74,6 +74,30 @@ Run `commands/remove_repo.sh <reponame>`
 
 Run `commands/azure/destroy_host.sh`
 
+## Google Cloud / Google Compute Engine
+
+### Prerequisites
+
+- Install [Google Cloud SDK](https://cloud.google.com/sdk/downloads)
+- Create a new project in Google cloud
+  - Name it "Plastic Cloud to UCB GCE"
+  - Enable Compute Engine API access for project
+  - Enable billing for project
+
+### Authentication
+
+  `gcloud auth login`
+
+  `gcloud auth application-default login`
+
+### Rent & start up a VM with Google Compute Engine
+
+  `./commands/gce/create_host.sh [region (default: europe-west1)] [zone (default: europe-west1-b)]`
+
+### Remove VM from Google Compute Engine
+
+  `./commands/gce/destroy_host.sh`
+   
 ## Misc
 	
 ### Configure Docker tools to work against local Docker VM
