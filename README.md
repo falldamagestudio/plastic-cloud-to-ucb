@@ -23,16 +23,10 @@ The containers can be run on the same VM.
   - Have your local Plastic client/server able to connect to the Plastic Cloud account
   - Have a connection profile configured with account credentials for accessing your organization's Plastic Cloud account
 - Install [Docker](https://docs.docker.com/engine/installation/) or [Docker Toolbox](https://docs.docker.com/toolbox/overview/)
-- Install [Python 2.x or 3.x](https://www.python.org/downloads/)
-- Install [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 
 ## "Quick" start
 
 Perform all activity from within the Docker terminal
-
-### Rent & start up a VM in Azure
-
-Run `commands/azure/create_host.sh`
 
 ### Build Docker containers
 
@@ -64,13 +58,34 @@ Run `commands/configure.sh`
 
 ### Trigger build in Unity Cloud Build
 
+(This requires the host that runs Docker to be accessible from the Internet)
+
 Done! UCB should now be able to fetch contents from the Git repository and build it
 
 ### Remove repository from Git server
 
 Run `commands/remove_repo.sh <reponame>`
 
-### Remove VM from Azure
+## Microsoft Azure
+
+### Prerequisites
+
+- Install [Python 2.x or 3.x](https://www.python.org/downloads/)
+- Install [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
+
+### Authentication
+
+Run `az login` and complete authentication in browser
+
+### Rent & start up a VM in Azure
+
+Run `commands/azure/create_host.sh`
+
+### Configure Docker tools to work against your VM in Azure
+
+Run `eval $(docker-machine env plastic-cloud-to-ucb-azure)`
+
+### Remove your VM from Azure
 
 Run `commands/azure/destroy_host.sh`
 
@@ -86,27 +101,27 @@ Run `commands/azure/destroy_host.sh`
 
 ### Authentication
 
-  `gcloud auth login`
+Run `gcloud auth login` and complete authentication in browser
 
-  `gcloud auth application-default login`
+Run `gcloud auth application-default login` and complete authentication in browser
 
 ### Rent & start up a VM with Google Compute Engine
 
-  `./commands/gce/create_host.sh [region (default: europe-west1)] [zone (default: europe-west1-b)]`
+Run `./commands/gce/create_host.sh [region (default: europe-west1)] [zone (default: europe-west1-b)]`
 
-### Remove VM from Google Compute Engine
+### Configure Docker tools to work against your VM in Google Compute Engine
 
-  `./commands/gce/destroy_host.sh`
+Run `eval $(docker-machine env plastic-cloud-to-ucb-gce)`
+
+### Remove your VM from Google Compute Engine
+
+Run `./commands/gce/destroy_host.sh`
    
 ## Misc
 	
 ### Configure Docker tools to work against local Docker VM
 
 Run `eval $(docker-machine env default)`
-
-### Configure Docker tools to work against the VM in Azure
-
-Run `eval $(docker-machine env plastic-cloud-to-ucb-azure)`
 
 	
 ## Thanks
