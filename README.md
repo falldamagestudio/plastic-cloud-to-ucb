@@ -113,9 +113,9 @@ Run `./commands/azure/destroy_host.sh`
 
 ### Authentication
 
-Run `gcloud auth login` and complete authentication in browser
+Run `eval $(./commands/gce/gcloud.sh) auth login` and complete authentication in browser
 
-Run `gcloud auth application-default login` and complete authentication in browser
+Run `eval $(./commands/gce/gcloud.sh) auth application-default login` and complete authentication in browser
 
 ### Rent & start up a VM with Google Compute Engine
 
