@@ -33,8 +33,15 @@ This package contains two Docker containers. You deploy these containers to a VM
 You should be able to get replication up and running, but Unity Cloud Build will be unable to connect since your machine does not have a public IP.
 - Rent a VM from [Azure](#running-in-microsoft-azure) or [Google Cloud / Google Compute Engine](#running-in-google-cloud--google-compute-engine)
 - Deploy the current configuration to Azure/Google: Run `./commands/up.sh && ./commands/configure.sh`
-- Add repositories for replication: Run `./commands/create_repo.sh <reponame>` for each repo
-- Unity Cloud Build should now be able to initiate builds for those repositories
+- Add repositories for replication:
+  - Run `./commands/create_repo.sh <reponame>` for a repo
+  - Run `docker exec -it /root/replicate.sh <reponame>` to perform initial replication
+- Add repositories for replication:
+  - Run `./commands/create_repo.sh <reponame>` for a repo
+  - Configure Unity Cloud Build for the corresponding project to point to the server URL
+  - Copy the SSH key from the Unity Cloud Build configuration to `./temp/id_rsa.<reponame>.pub`
+  - Run `./commands/configure.sh` to add key to Git server
+  - Unity Cloud Build should now be able to initiate builds from the newly added repository
 
 ## Testing on your local machine
 
