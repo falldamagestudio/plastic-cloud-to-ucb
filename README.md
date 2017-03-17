@@ -1,4 +1,4 @@
-# Bridge from Plastic Cloud to Unity Cloud Build
+﻿# Bridge from Plastic Cloud to Unity Cloud Build
 
 Glue logic which enables [Unity Cloud Build](https://unity3d.com/services/cloud-build) to build from [Plastic Cloud](https://www.plasticscm.com/cloud/index.html) repositories.
 
@@ -9,7 +9,7 @@ If either of these happened, this project would become obsolete:
 
 ## Current state
 
-It works, but it does not replicate automatically. Replication needs to be triggered manually each time.
+This is used for our internal development now.
 
 ## Overview
 
@@ -42,6 +42,10 @@ You should be able to get replication up and running, but Unity Cloud Build will
   - Copy the SSH key from the Unity Cloud Build configuration to `./temp/id_rsa.<reponame>.pub`
   - Run `./commands/configure.sh` to add key to Git server
   - Unity Cloud Build should now be able to initiate builds from the newly added repository
+
+## CI results for containers
+
+See [the Docker Hub page](https://hub.docker.com/r/falldamage/plastic-cloud-to-ucb/builds/) for build status.
 
 ## Testing on your local machine
 
@@ -118,6 +122,8 @@ Run `./commands/azure/destroy_host.sh`
 
 ## Running in Google Cloud / Google Compute Engine
 
+*NOTE: Running on Google Compute Engine does currently not work. See https://github.com/falldamagestudio/plastic-cloud-to-ucb/issues/15 for details.*
+
 ### Prerequisites
 
 - Install [Google Cloud SDK](https://cloud.google.com/sdk/downloads)
@@ -150,7 +156,6 @@ Run `./commands/gce/destroy_host.sh`
 
 Run `eval $(docker-machine env default)`
 
-	
 ## Thanks
 
 Thanks to Miguel González for the original Plastic server project: https://github.com/mig42/plastic-docker
