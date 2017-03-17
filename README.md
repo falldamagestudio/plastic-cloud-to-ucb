@@ -81,6 +81,14 @@ Run `./commands/configure.sh`
 
 Unity Cloud Build should now be able to access the repository on your Git server.
 
+### Start continuous replication
+
+Run `./commands/start_replication_service.sh`
+
+### Stop continuous replication
+
+Run `./commands/stop_replication_service.sh`
+
 ### Remove repository from Git server
 
 Run `./commands/remove_repo.sh <reponame>`

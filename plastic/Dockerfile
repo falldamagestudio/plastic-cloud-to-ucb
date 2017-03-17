@@ -31,6 +31,7 @@ RUN { \
     ln -s /conf/id_rsa /root/.ssh/id_rsa; \
     ln -s /conf/ssh_config /root/.ssh/config; \
     ln -s /conf/known_hosts /root/.ssh/known_hosts; \
+    ln -s /conf/replication /etc/init.d/replication; \
 }
 
 RUN umtool cu root root
@@ -41,6 +42,9 @@ ADD loader.log.conf /opt/plasticscm5/server/
 ADD db.conf /opt/plasticscm5/server/
 ADD client.conf /conf/
 ADD ssh_config /conf/
+ADD replication /conf/
+
+RUN chmod 755 /etc/init.d/replication /conf/replication
 
 VOLUME /conf
 VOLUME /db/sqlite

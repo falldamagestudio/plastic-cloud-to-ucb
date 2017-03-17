@@ -1,3 +1,4 @@
 *.conf eol=lf
 *.sh eol=lf
+replication eol=lf
 ssh_config eol=lf
