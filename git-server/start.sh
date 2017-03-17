@@ -4,7 +4,10 @@
 # then it copies its contain in authorized_keys file
 if [ "$(ls -A /keys/)" ]; then
   cd /home/git
-  cat /keys/*.pub > .ssh/authorized_keys
+  rm -f .ssh/authorized_keys
+  for keyfile in /keys/*.pub; do
+    (cat "$keyfile"; echo '') >> .ssh/authorized_keys
+  done
   chown -R git:git .ssh
   chmod 700 .ssh
   chmod -R 600 .ssh/*
