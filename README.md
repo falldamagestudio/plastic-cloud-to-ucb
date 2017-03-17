@@ -1,4 +1,4 @@
-﻿# Bridge from Plastic Cloud to Unity Cloud Build
+# Bridge from Plastic Cloud to Unity Cloud Build
 
 Glue logic which enables [Unity Cloud Build](https://unity3d.com/services/cloud-build) to build from [Plastic Cloud](https://www.plasticscm.com/cloud/index.html) repositories.
 
