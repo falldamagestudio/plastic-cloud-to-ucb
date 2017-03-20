@@ -30,3 +30,24 @@ services:
       - plastic-conf:/conf
       - plastic-db:/db/sqlite
       - plastic-logs:/logs
+
+      
+# Hack: Force MTU for all Docker-created networks to 1460
+#
+# This works around problems on Google Container Engine:
+# - The MTU in regular GCE is is 1460
+# - Docker will default to an MTU of 1500 for all its internal networks since Docker 1.10
+#   (reference: https://github.com/docker/docker/pull/18108, https://github.com/docker/docker/issues/22028)
+# - Path MTU Discovery is not working as it should in the Docker container on GCE
+#   (reference example when it is working: https://github.com/docker/docker/pull/18108#issuecomment-159784979)
+#
+# These three factors together = TCP communications failure when performing "cm replicate" when run in Docker on GCE.
+#
+# We lower the MTU to 1460 regardless of network, since docker-compose doesn't know which network it is running against --
+#  and it is more important to make it work than to make it run optimally
+
+networks:
+  default:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 1460

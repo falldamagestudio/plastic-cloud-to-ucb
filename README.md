@@ -122,8 +122,6 @@ Run `./commands/azure/destroy_host.sh`
 
 ## Running in Google Cloud / Google Compute Engine
 
-*NOTE: Running on Google Compute Engine does currently not work. See https://github.com/falldamagestudio/plastic-cloud-to-ucb/issues/15 for details.*
-
 ### Prerequisites
 
 - Install [Google Cloud SDK](https://cloud.google.com/sdk/downloads)

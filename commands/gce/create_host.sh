@@ -48,14 +48,19 @@ fi
 "$gcloud" compute addresses create --project "$projectid" --region "$region" "$name"
 
 # Start VM, connect it to static IP address
+"$gcloud" compute instances create \
+	--zone "$zone" \
+	--machine-type g1-small \
+	--image https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/family/ubuntu-1404-lts \
+	--boot-disk-size 200 \
+	--address "$name" \
+	$name
+
+# Add VM to docker-machine
 docker-machine create --driver google \
 	--google-project "$projectid" \
 	--google-zone "$zone" \
-	--google-machine-type g1-small \
-	--google-machine-image https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/family/ubuntu-1404-lts \
-	--google-disk-size 100 \
-	--google-address "$name" \
-	$name
+    --google-use-existing "$name"
 
 # Open up port 2222 for external access
 "$gcloud" compute firewall-rules create --project "$projectid" --allow tcp:2222 "$name"
