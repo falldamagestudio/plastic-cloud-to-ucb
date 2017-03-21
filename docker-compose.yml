@@ -34,7 +34,7 @@ services:
       
 # Hack: Force MTU for all Docker-created networks to 1460
 #
-# This works around problems on Google Container Engine:
+# This works around problems on Google Compute Engine:
 # - The MTU in regular GCE is is 1460
 # - Docker will default to an MTU of 1500 for all its internal networks since Docker 1.10
 #   (reference: https://github.com/docker/docker/pull/18108, https://github.com/docker/docker/issues/22028)
