@@ -50,7 +50,7 @@ fi
 # Start VM, connect it to static IP address
 "$gcloud" compute instances create \
 	--zone "$zone" \
-	--machine-type g1-small \
+	--machine-type n1-standard-1 \
 	--image https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/family/ubuntu-1404-lts \
 	--boot-disk-size 200 \
 	--address "$name" \
