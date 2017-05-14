@@ -13,7 +13,7 @@ This is used for our internal development now.
 
 ## Overview
 
-![Plastic cloud to UCB diagram](https://www.draw.io/?lightbox=1&highlight=0000ff&nav=1&title=Plastic%20Cloud%20to%20UCB#R3Zhdb5swFIZ%2FDbcTYCDpZZN17cUmVYqmdZcuOGDV2MiYJtmv3wFsvky2LGsTqbkBH38%2F7%2FE5Dg5a5%2Ft7iYvsm0gIc3w32Tvos%2BP7nhv48Kgth9YSumFrSCVNdKPesKG%2FiOmprRVNSDlqqIRgihZjYyw4J7Ea2bCUYjduthVsPGuBU2IZNjFmtvUHTVTWWpeh29sfCE0zM7Pn6ppnHL%2BkUlRcz%2Bf4aNv82uocm7F0%2BzLDidgNTOjOQWsphGrf8v2asJqtwdb2%2B3Kktlu3JFyd0gG1HV4xq%2FTWv3OqDmBaM1El8FxVFOC1i1UHA2iXUUU2BY7r8g6cwEGrTOUMSh686lGJVGR%2FdGVet1%2FwIyJyomQ9selwoxFpF%2FKRLu96QTyDMRuIEWkb1j6QdkP3HOBFo5jHElhYHhkuFY17MBcHEkRXBBJaQP6VwJYythZMyKY1SjBZbmOwl0qKFzKoieIled6%2BkRMtxsxQZDML0Ayz7kD%2FD7TIgvZVQIwB0z1Vjh8xVe%2B%2FwBzeU9XsOMJ5zY0%2Fl%2FWjJBK2b1rCdOPGVz%2BTaHlBF1wcpdmfTQPs6ofzomS8E04n4cltnRihFAOuksZjBrBPeXiCgvspNMWfpm5P1aAKSnWN25EjiZVNJ9xgKaKSMRmdC4VlStQgD9l0B%2FTCGXjGJgnDir6OFzFHVM%2FwKCgsrxPPn7p1MBGlXbzuNcymk4HCaYj2JgO1W7YGagTutn2a5nZwOV9zb6h4r%2FKTVrlTvKk5T%2FOFrXl0Tc2t68VUqlM1R%2F7EeW7eT3M7BPahD1LK5sBjywkgpqmx7OOMywUnk%2FSsTZjRlNe%2BA7pCUEWrOkJSCLm3uiKnSVJPs5qLr28QVNE0e88E1WDGRfy3iKlLi3WTtN2iatqJJs%2B4m83DRyJuJXjPJh69F%2FGbP3i3JAUDEIoK%2FpF4W9eGC%2FI2Y7zHrcF1jt0avLMzSGBnkMU1M0iI%2FhL4T741TAea%2Fvc4O4NAsf%2BU0Dbvv9egu98%3D)
+![Plastic cloud to UCB diagram](https://www.draw.io/?lightbox=1&highlight=0000ff&nav=1&title=Plastic%20Cloud%20to%20UCB.xml#Uhttps%3A%2F%2Fraw.githubusercontent.com%2Ffalldamagestudio%2Fplastic-cloud-to-ucb%2Fmaster%2FPlastic%2520Cloud%2520to%2520UCB.xml)
 
 This package contains two Docker containers. You deploy these containers to a VM in Azure or Google Cloud. Together, these form a bridge from Plastic Cloud to Unity Cloud Build.
 
