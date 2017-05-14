@@ -13,7 +13,7 @@ This is used for our internal development now.
 
 ## Overview
 
-![Plastic cloud to UCB diagram](https://www.draw.io/?lightbox=1&highlight=0000ff&nav=1&title=Plastic%20Cloud%20to%20UCB.xml#Uhttps%3A%2F%2Fraw.githubusercontent.com%2Ffalldamagestudio%2Fplastic-cloud-to-ucb%2Fmaster%2FPlastic%2520Cloud%2520to%2520UCB.xml)
+![Plastic cloud to UCB diagram](Plastic%20Cloud%20to%20UCB.png)
 
 This package contains two Docker containers. You deploy these containers to a VM in Azure or Google Cloud. Together, these form a bridge from Plastic Cloud to Unity Cloud Build.
 
