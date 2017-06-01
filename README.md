@@ -37,13 +37,14 @@ You should be able to get replication up and running, but Unity Cloud Build will
 - Deploy the current configuration to Azure/Google: Run `./commands/up.sh && ./commands/configure.sh`
 - Add repositories for replication:
   - Run `./commands/create_repo.sh <reponame>` for a repo
-  - Run `docker exec -it /root/replicate.sh <reponame>` to perform initial replication
-- Add repositories for replication:
-  - Run `./commands/create_repo.sh <reponame>` for a repo
+  - Run `./commands/replicate.sh <reponame>` to perform initial replication
+- Enable Unity Cloud Build to access repository:
   - Configure Unity Cloud Build for the corresponding project to point to the server URL
   - Copy the SSH key from the Unity Cloud Build configuration to `./temp/id_rsa.<reponame>.pub`
   - Run `./commands/configure.sh` to add key to Git server
   - Unity Cloud Build should now be able to initiate builds from the newly added repository
+- Start continuous replication:
+  - Run `./commands/start_replication_service.sh` to activate continuous replication
 
 ## CI results for containers
 
