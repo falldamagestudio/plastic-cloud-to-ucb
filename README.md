@@ -33,8 +33,11 @@ This package contains two Docker containers. You deploy these containers to a VM
 
 - Begin by [testing on your local machine](#testing-on-your-local-machine).
 You should be able to get replication up and running, but Unity Cloud Build will be unable to connect since your machine does not have a public IP.
-- Rent a VM from [Azure](#running-in-microsoft-azure) or [Google Cloud / Google Compute Engine](#running-in-google-cloud--google-compute-engine)
-- Deploy the current configuration to Azure/Google: Run `./commands/up.sh && ./commands/configure.sh`
+- Rent a VM from [Google Cloud / Google Compute Engine](#running-in-google-cloud--google-compute-engine)
+- SSH into the VM: `eval $(./commands/gce/gcloud.sh) compute ssh plastic-cloud-to-ucb-gce`
+- Clone the Git repository to your VM
+- Duplicate the 'temp' directory to your VM
+- Deploy the current configuration to Google: Run `./commands/up.sh && ./commands/configure.sh`
 - Add repositories for replication:
   - Run `./commands/create_repo.sh <reponame>` for a repo
   - Run `./commands/replicate.sh <reponame>` to perform initial replication
@@ -64,9 +67,7 @@ Run `./commands/up.sh`
 
 ### Configure Docker containers to talk to each other and Plastic Cloud
 
-Copy cryptedservers.conf & *.key files from `C:\Program Files\PlasticSCM5\server` to `temp`
-
-Copy profiles.conf from `C:\Users\<Current user>\AppData\Local\plastic4` to `temp`
+Copy profiles.conf, cryptedservers.conf & *.key files from `C:\Users\<Current user>\AppData\Local\plastic4` to `temp`
 
 Run `./commands/configure.sh`
 
@@ -100,29 +101,6 @@ Run `./commands/stop_replication_service.sh`
 
 Run `./commands/remove_repo.sh <reponame>`
 
-## Running in Microsoft Azure
-
-### Prerequisites
-
-- Install [Python 2.x or 3.x](https://www.python.org/downloads/)
-- Install [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
-
-### Authentication
-
-Run `az login` and complete authentication in browser
-
-### Rent & start up a VM in Azure
-
-Run `./commands/azure/create_host.sh`
-
-### Configure Docker tools to work against your VM in Azure
-
-Run `eval $(docker-machine env plastic-cloud-to-ucb-azure)`
-
-### Remove your VM from Azure
-
-Run `./commands/azure/destroy_host.sh`
-
 ## Running in Google Cloud / Google Compute Engine
 
 ### Prerequisites
@@ -143,20 +121,14 @@ Run `eval $(./commands/gce/gcloud.sh) auth application-default login` and comple
 
 Run `./commands/gce/create_host.sh [region (default: europe-west1)] [zone (default: europe-west1-b)]`
 
-### Configure Docker tools to work against your VM in Google Compute Engine
+### Access your VM in Google Compute Engine
 
-Run `eval $(docker-machine env plastic-cloud-to-ucb-gce)`
+Run `eval $(./commands/gce/gcloud.sh) compute ssh plastic-cloud-to-ucb-gce` 
 
 ### Remove your VM from Google Compute Engine
 
 Run `./commands/gce/destroy_host.sh`
    
-## Misc
-	
-### Configure Docker tools to work against local Docker VM
-
-Run `eval $(docker-machine env default)`
-
 ## Thanks
 
 Thanks to Miguel González for the original Plastic server project: https://github.com/mig42/plastic-docker
