@@ -15,9 +15,6 @@ projectname="Plastic Cloud to UCB GCE"
 
 name="plastic-cloud-to-ucb-gce"
 
-# Remove VM
-docker-machine rm -f "$name"
-
 # Translate from  project name to project ID
 projectid=`"$gcloud" projects list | grep "$projectname" | awk '{ print $1 }'`
 if [ "$projectid" == "" ]; then
@@ -27,6 +24,9 @@ fi
 
 # Switch currently-active project to this one
 "$gcloud" config set project "$projectid"
+
+# Remove VM
+"$gcloud" compute instances delete --quiet "$name"
 
 # Remove firewall rule
 "$gcloud" compute firewall-rules delete --quiet "$name"

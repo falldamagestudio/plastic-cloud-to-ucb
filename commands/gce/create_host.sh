@@ -44,6 +44,10 @@ fi
 # Switch currently-active project to this one
 "$gcloud" config set project "$projectid"
 
+# Set default region & zone for future commands
+"$gcloud" config set compute/region "$region"
+"$gcloud" config set compute/zone "$zone"
+
 # Allocate a static IP address
 "$gcloud" compute addresses create --project "$projectid" --region "$region" "$name"
 
@@ -56,11 +60,10 @@ fi
 	--address "$name" \
 	$name
 
-# Add VM to docker-machine
-docker-machine create --driver google \
-	--google-project "$projectid" \
-	--google-zone "$zone" \
-    --google-use-existing "$name"
-
 # Open up port 2222 for external access
 "$gcloud" compute firewall-rules create --project "$projectid" --allow tcp:2222 "$name"
+
+# Copy over docker installation script, run it, and remove afterward
+gcloud compute scp ./commands/gce/install_docker_on_ubuntu.sh "$name":
+gcloud compute ssh "$name" --command './install_docker_on_ubuntu.sh'
+gcloud compute ssh "$name" --command 'rm install_docker_on_ubuntu.sh'
