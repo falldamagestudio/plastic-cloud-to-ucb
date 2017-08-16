@@ -125,10 +125,6 @@ Run `./commands/gce/create_host.sh [region (default: europe-west1)] [zone (defau
 
 Run `eval $(./commands/gce/gcloud.sh) compute ssh plastic-cloud-to-ucb-gce` 
 
-### Install a 1-year Plastic license
-
-Request a Plastic Team Edition 1-year license for 1 user via https://plasticscm.com . Then copy the `plasticd.lic` file into `temp`, and reconfigure.
-
 ### Remove your VM from Google Compute Engine
 
 Run `./commands/gce/destroy_host.sh`

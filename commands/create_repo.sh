@@ -8,4 +8,4 @@ fi
 reponame="$1"
 
 docker exec plastic /root/initrepo.sh "$reponame"
-echo "Repository is available at ssh://git@`docker-machine ip $DOCKER_MACHINE_NAME`:2222/repos/""$reponame"".git"
+echo "Repository is available at ssh://git@<docker machine IP>:2222/repos/""$reponame"".git"
