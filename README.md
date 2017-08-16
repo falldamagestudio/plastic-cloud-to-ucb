@@ -89,6 +89,10 @@ Run `./commands/configure.sh`
 
 Unity Cloud Build should now be able to access the repository on your Git server.
 
+### Install a 1-year Plastic license
+
+Request a Plastic Team Edition 1-year license for 1 user via https://plasticscm.com . Then copy the `plasticd.lic` file into `temp`, and reconfigure.
+
 ### Start continuous replication
 
 Run `./commands/start_replication_service.sh`
