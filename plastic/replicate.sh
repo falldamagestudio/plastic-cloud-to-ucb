@@ -4,7 +4,7 @@
 
 for repository_name in `cm lrep --format="{repname}" | grep -v "default"`
 do
-	for branch_name in `cm find "branches on repository '$repository_name'" --nototal --format="{name}"`
+	cm find "branches on repository '$repository_name'" --nototal --format="{name}" | while IFS= read -r branch_name
 	do
 		/root/replicate-branch-from-plastic-cloud.sh "$repository_name" "$branch_name"
 	done
