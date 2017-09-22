@@ -38,9 +38,9 @@ You should be able to get replication up and running, but Unity Cloud Build will
 - Clone the Git repository to your VM
 - Duplicate the 'temp' directory to your VM
 - Deploy the current configuration to Google: Run `./commands/up.sh && ./commands/configure.sh`
-- Add repositories for replication:
+- Add repositories and branches for replication:
   - Run `./commands/create_repo.sh <reponame>` for a repo
-  - Run `./commands/replicate.sh <reponame>` to perform initial replication
+  - Run `./commands/replicate_repo_branch.sh <reponame> <branch>` to perform initial replication for a branch in that repo
 - Enable Unity Cloud Build to access repository:
   - Configure Unity Cloud Build for the corresponding project to point to the server URL
   - Copy the SSH key from the Unity Cloud Build configuration to `./temp/id_rsa.<reponame>.pub`
@@ -75,9 +75,9 @@ Run `./commands/configure.sh`
 
 Run `./commands/create_repo.sh <reponame>`
 
-### Replicate repository from Plastic Cloud to the Git server running inside the VM
+### Replicate a branch in repository from Plastic Cloud to the Git server running inside the VM
 
-Run `./commands/replicate.sh <reponame>`
+Run `./commands/replicate_repo_branch.sh <reponame> <branchname>`
 
 ### Configure Git server to accept logins from Unity Cloud Build for one specific project
 
