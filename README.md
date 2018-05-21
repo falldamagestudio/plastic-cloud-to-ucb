@@ -9,7 +9,9 @@ If either of these happened, this project would become obsolete:
 
 ## Current state
 
-This is used for our internal development now.
+Should work, but occasional bugs require manual restart of the containers once every couple of weeks.
+
+This was used for internal development for a 6-month period. We abandoned it in favor of a Jenkins build setup, because the Jenkins setup offered significantly shorter build turnaround times (from 30-60 minutes to 15 minutes for our project).
 
 ## Overview
 
